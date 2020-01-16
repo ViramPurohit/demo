@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_match_list.*
 import shaadi.com.R
-import shaadi.com.adapter.UserListAdapter
+import shaadi.com.adapter.ShaadiUserListAdapter
 import shaadi.com.api.UserListState
 import shaadi.com.base.BaseBindingFragment
 import shaadi.com.base.gone
@@ -29,7 +29,7 @@ class MatchListFragment : BaseBindingFragment<FragmentMatchListBinding,
 
     override fun layoutId() = R.layout.fragment_match_list
 
-    private var userListAdapter: UserListAdapter? = null
+    private var userListAdapter: ShaadiUserListAdapter? = null
     private lateinit var mContext : Context
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -65,6 +65,7 @@ class MatchListFragment : BaseBindingFragment<FragmentMatchListBinding,
                 (layoutManager as LinearLayoutManager).getOrientation()
             )
             userlist_recycleview.addItemDecoration(dividerItemDecoration)
+            setHasFixedSize(true)
         }
 
         /*
@@ -126,6 +127,13 @@ class MatchListFragment : BaseBindingFragment<FragmentMatchListBinding,
                         userProgress.visible()
 
                     }
+                    is UserListState.UserMessage -> {
+                        userProgress.let {
+                            userProgress.gone()
+                        }
+                        showLong(userProgress,state.message)
+
+                    }
                 }
             }.addTo(disposable)
     }
@@ -134,7 +142,7 @@ class MatchListFragment : BaseBindingFragment<FragmentMatchListBinding,
 
     private fun setUserDetails(results: List<ShaadiUsers>) {
         userListAdapter = context?.let {
-            UserListAdapter(it,
+            ShaadiUserListAdapter(it,
                 results as MutableList<ShaadiUsers>
             ) { shaadiUsers: ShaadiUsers, status: String, pos: Int ->
 

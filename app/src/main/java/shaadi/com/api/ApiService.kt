@@ -15,8 +15,4 @@ interface ApiService{
         @Query("results")  limit :Int
     ): Call<UserListResponse>
 
-    @GET("api/")
-    fun productListt(
-        @Query("results")  limit :Int
-    ): Publisher<UserListResponse>
 }

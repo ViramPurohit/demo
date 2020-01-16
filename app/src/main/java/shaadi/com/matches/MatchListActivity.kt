@@ -10,8 +10,8 @@ class MatchListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addFragmentWithoutTransition(supportFragmentManager,
-            MatchListFragment.newInstance(),false)
+        addFragments(supportFragmentManager,
+            MatchListFragment.newInstance())
 
     }
 

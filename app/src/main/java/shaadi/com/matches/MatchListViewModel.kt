@@ -14,9 +14,6 @@ import shaadi.com.base.BaseViewModel
 import shaadi.com.db.ShaadiUsers
 import shaadi.com.utils.Common
 import javax.inject.Inject
-import io.reactivex.observers.DisposableSingleObserver
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.util.Log
 
 
 class MatchListViewModel
@@ -90,7 +87,6 @@ class MatchListViewModel
                 registerRepository.insertUser(results)
             }
         })
-//            .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(object : CompletableObserver {
                 override fun onSubscribe(d: Disposable) {}
@@ -106,23 +102,8 @@ class MatchListViewModel
 
 
     fun updateUser(shaadiUsers: ShaadiUsers) {
-
         registerRepository.updateUsers(shaadiUsers)
 
-
-//        registerRepository.updateUsers(shaadiUsers)
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(object : DisposableSingleObserver<Int>() {
-//                override fun onError(e: Throwable) {
-//                    e.printStackTrace()
-//                }
-//
-//                override fun onSuccess(number: Int) {
-//                    // showEmployee(employee)
-//                    Log.e("TAG","--- ${number}")
-//                }
-//            })
     }
 
 

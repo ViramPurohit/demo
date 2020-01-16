@@ -12,12 +12,7 @@ interface ShaadiUserDao {
     fun insertUsers(shaadiUsers: List<ShaadiUsers>)
 
     @Query("SELECT COUNT(login_uuid) FROM shaadiUsers")
-    fun getUserCount(): Flowable<Int>
-
-
-//    @Query("UPDATE shaadiUsers SET status = :status WHERE login_uuid = :login_uuid")
-//    fun updateStatus(status: String,  login_uuid: String) : Flowable<Int>
-
+    fun getUserCount(): Int
 
 
     @Update
@@ -25,5 +20,5 @@ interface ShaadiUserDao {
 
 
     @Query("SELECT * FROM shaadiUsers")
-    fun getAll(): Flowable<List<ShaadiUsers>>
+    fun getAll(): List<ShaadiUsers>
 }

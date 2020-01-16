@@ -29,9 +29,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding, T : ViewModel>(
         return inflateView(inflater, container, savedInstanceState)
     }
 
-    /**
-     * Use this if your subclass requires to have some ic_sort_blue of hooks into the inflation process of the view
-     */
+
     open fun inflateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

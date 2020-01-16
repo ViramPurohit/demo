@@ -18,7 +18,11 @@ android {
     }
     buildTypes {
 
+        debug{
+            buildConfigField "String", "Shaadi_API", "\"https://randomuser.me/\""
+        }
         release {
+            buildConfigField "String", "Shaadi_API", "\"https://randomuser.me/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -45,14 +49,15 @@ dependencies {
 
     def dagger_version = "2.25.4"
     implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation 'com.google.dagger:dagger-android-support:2.25.4'
-    kapt 'com.google.dagger:dagger-android-processor:2.25.4'
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
-//    implementation 'androidx.room:room-common:2.2.3'
+
     implementation 'androidx.room:room-runtime:2.2.3'
     kapt "android.arch.persistence.room:compiler:1.1.1"
+    implementation 'androidx.room:room-rxjava2:2.2.3'
 
     implementation 'com.google.code.gson:gson:2.8.6'
     /*Retrofit implementation*/
@@ -63,10 +68,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
 
 
-    /*We have whole application in Kotlin so no need to of RxJava*/
+    /*reactivex*/
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
-//    implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -75,6 +79,6 @@ dependencies {
     /*Image dependency*/
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
-    implementation 'androidx.room:room-rxjava2:2.2.3'
+
 
 }

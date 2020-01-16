@@ -57,13 +57,11 @@ abstract class BaseActivity :  AppCompatActivity(),HasAndroidInjector {
 
     }
 
-    fun addFragmentWithoutTransition(
+    fun addFragments(
         supportFragmentManager: FragmentManager,
-        fragment: Fragment, addToBackStack: Boolean = false
+        fragment: Fragment
     ) {
-        if(!addToBackStack){
-            supportFragmentManager.popBackStack("", FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        }
+
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.addToBackStack("")
         fragmentTransaction.add(R.id.main_container, fragment, fragment.javaClass.name)

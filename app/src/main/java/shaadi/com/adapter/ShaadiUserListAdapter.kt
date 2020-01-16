@@ -14,9 +14,9 @@ import shaadi.com.R
 import shaadi.com.db.ShaadiUsers
 
 
-class UserListAdapter(var context: Context, var user_list: MutableList<ShaadiUsers>,
-                      val listener: (ShaadiUsers,String,Int) -> Unit) :
-    RecyclerView.Adapter<UserListAdapter.DealViewHolder>() {
+class ShaadiUserListAdapter(var context: Context, var user_list: MutableList<ShaadiUsers>,
+                            val listener: (ShaadiUsers,String,Int) -> Unit) :
+    RecyclerView.Adapter<ShaadiUserListAdapter.DealViewHolder>() {
 
 
     fun updateData(new_userlist: ShaadiUsers,position : Int){
@@ -87,8 +87,10 @@ class UserListAdapter(var context: Context, var user_list: MutableList<ShaadiUse
             shaadiUsers.status.let {status->
                 if(status.equals("Yes")){
                     btn_accept?.setText(R.string.member_accept)
+                    btn_decline?.setText(R.string.decline)
                 }else if(status.equals("No")){
                     btn_decline?.setText(R.string.member_decline)
+                    btn_accept?.setText(R.string.accept)
                 }else{
                     btn_accept?.setText(R.string.accept)
                     btn_decline?.setText(R.string.decline)
@@ -107,13 +109,12 @@ class UserListAdapter(var context: Context, var user_list: MutableList<ShaadiUse
                     picture ->
                     Glide.with(context).load(picture.thumbnail)
                         .thumbnail(0.5f)
-                        .placeholder(R.mipmap.ic_launcher)
+                        .placeholder(R.drawable.ic_man)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(it1)
                 }
 
             }
-
 
         }
 

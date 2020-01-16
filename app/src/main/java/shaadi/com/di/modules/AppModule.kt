@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import shaadi.com.BuildConfig
 import shaadi.com.ShaadiApplication
 import shaadi.com.api.ApiService
 import shaadi.com.api.ShaadiRepository
@@ -60,7 +61,7 @@ class AppModule {
         return Retrofit.Builder().client(client)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://randomuser.me/")
+            .baseUrl(BuildConfig.Shaadi_API)
             .build()
     }
 

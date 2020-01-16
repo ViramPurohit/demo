@@ -49,6 +49,6 @@ abstract class BaseFragment : Fragment() {
 }
 
 fun ViewGroup.inflate(layoutId: Int): View {
-    return android.view.LayoutInflater.from(context).inflate(layoutId, this, false)
+    return LayoutInflater.from(context).inflate(layoutId, this, false)
 }
 
